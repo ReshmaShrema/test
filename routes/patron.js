@@ -1,6 +1,43 @@
 var express = require('express');
 var router = express.Router();
-//var patronHelpers=require('../helpers/patronHelpers')
+var patronHelpers=require('../helpers/patronHelpers')
+
+
+
+
+
+/* Patron Login  */
+router.get('/patronLogin', (req, res)=> {
+    res.render('patron/patronLogin')
+  })
+  router.post('/patronLogin',(req, res)=> {
+    console.log()
+    patronHelpers.doLogin(req.body).then((response)=>{
+      console.log(response)
+      
+    })
+    res.render('patron/patronLogin')
+  })
+
+
+
+  router.get('/patronHome', (req, res)=> {
+    res.render('patron/patronHome')
+  })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* GET users listing. */
 //const verifyLogin=(req,res,next)=>{

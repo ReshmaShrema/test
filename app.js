@@ -7,11 +7,16 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var librarianRouter = require('./routes/librarian');
 var patronRouter = require('./routes/patron');
+var ocrRouter=require('./routes/ocr');
 var db=require('./config/connection');
 var session=require('express-session')
 var fileUpload=require('express-fileupload')
 
+
 var app = express();
+
+
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -36,6 +41,7 @@ db.connect((err)=>{
 app.use('/', indexRouter);
 app.use('/librarian', librarianRouter);
 app.use('/patron', patronRouter);
+app.use('/ocr', ocrRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

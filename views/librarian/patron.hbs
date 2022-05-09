@@ -1,18 +1,22 @@
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-  <title>librarianHome</title>
+  <title>ADMIN HOME</title>
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
-
+<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" type="text/css" href="/stylesheets/adminpage/css/style.css">
-
+  <link rel="stylesheet" type="text/css" href="/adminpage/css/style.css">
+<style>
+a:hover {
+  background-color: rgb(167, 167, 143);
+}
+</style>
 </head>
 
 <body>
@@ -23,83 +27,134 @@
         <button type="button" id="sidebarCollapse" class="btn btn-primary">
         </button>
       </div>
-      <div class="img bg-wrap text-center py-4" style="background-image: url(/images/bg_1.jpg);">
+      <div class="img bg-wrap text-center py-4" style="background-image: url(/adminpage/images/bg_1.jpg);">
         <div class="user-logo">
-          <div class="img" style="background-image: url(/images/admin.png);"></div>
-          <h3>LIBRARIAN</h3>
+          <div class="img" style="background-image: url(/adminpage/images/admin.png);"></div>
+          <h3>ADMIN</h3>
         </div>
       </div>
       <ul class="list-unstyled components mb-5">
         <li>
           <a href="/librarian/librarianHome"><span class="fa fa-home mr-3"></span>HOME</a>
         </li>
-        <li>
-          <a href="/librarian/cataloging"><span class="fa fa-book mr-3"></span>Cataloging</a>
-        </li>
-      
-        <li>
-          <a href="/librarian/patron"><span class="fa fa-user mr-3"></span>Patron</a>
-        </li>
-        <li>
-          <a href="/librarian/book"><span class="fa fa-book mr-3"></span>Book</a>
-        </li><!--
-        <li>
-
-            <li>
-          <a href="/librarian/circulation"><span class="fa fa-child mr-3"></span>Circulation</a>
-        </li>
-          <a href="bookissue.html"><span class="fa fa-book mr-3"></span>Issue Book</a>
-        </li>
-        <li>
-          <a href="bookrenew.html"><span class="fa fa-book mr-3"></span>Renew Book</a>
-        </li>
-        <li>
-          <a href="returnbook.html"><span class="fa fa-reply mr-3"></span>Return Book</a>
-        </li>
-        <li>
-          <a href="studentsearch.html"><span class="fa fa-table mr-3"></span>User search</a>
-        </li>
          <li>
-          <a href="fine.html"><span class="fa fa-money mr-3"></span>Fine</a>
-        </li> 
-        <li>
-          <a href="report.html"><span class="fa fa-support mr-3"></span> Report</a>
-        </li> -->
-        <li>
-          <a href="/librarian/changePassword"><span class="fa  fa-key mr-3"></span> Change password</a>
+          <a href="/librarian/category"><span class="fa fa-th-large mr-3"></span>Category</a>
+        </li>
         </li>
         <li>
           <a href="/librarian/logout"><span class="fa fa-sign-out mr-3"></span> Sign Out</a>
         </li>
+       
       </ul>
 
     </nav>
     <!-- Page Content  -->
-    <div id="content" class="p-4 p-md-5 pt-5"></div><!--
+    <div id="content" class="p-4 p-md-5 pt-5">
     <div style=" left:200px; top:50px;height: 200px;  background-color: rgba(255,255,255,0.1);">
-  <div class="h-100 d-inline-block" style="position:relative; top:100px; left:50px;width: 200px; border-radius: 5px; background-color: rgba(39,222,93,.5)">
-  <h3 style="text-indent: +28px; ">STUDENTS</h3>
+<section>
+    <div class="container">
+      <div class="row mt-4">
+      <a href="/librarian/addPatron" style="padding-left:20px;padding-right:20px"class="btn btn-secondary ml-auto">Add Patron</a>
+      </div>
+    
 
-  </div>
-  <div class="h-100 d-inline-block" style="position:relative; top:100px; left:90px; width: 200px;  border-radius: 5px; background-color: rgba(39,222,93,.5)">
-  <h3 style="text-indent: +32px; ">FACULTY</h3>
+        <table class="table mt-5">
+       <thead>
+      <tr>
+      
+      <th scope="col">PatronId</th>
+      <th scope="col">PatronName</th>
+      
+      <th scope="col">Category</th>
+
+    
+
+      </tr>
+     </thead>
+      <tbody>
+       {{#each Patron}}
+      <tr>
+        <td>{{this.PatronId}}</td>
+        <td>{{this.PatronName}}</td>
+        <td>{{this.Category}}</td>
+        
+        
+   <td>   <a href="/librarian/editPatron/{{this._id}}" style="text-decoration:none;" >Edit </a>
+    <a href="/librarian/deletePatron/{{this._id}}" style="text-decoration:none; color:red;" onclick="return confirm('Are you sure you want to delete {{this.PatronName}}?')">Delete</a></td>
  
+      </tr>{{/each}}
+      </tbody>
+         </table>
+      </div>
+      </section>
+
+
+
+  
   </div>
-  <div class="h-100 d-inline-block" style="position:relative; top:100px; left:120px; width: 200px;  border-radius: 5px; background-color: rgba(39,222,93,.5)">
-  <h3 style="text-indent: +46px; ">BOOKS</h3>
+  
+  
+  
+  
+  
+  </div>
+  
+  
+  
+  
+  
   </div>
 
-  <div class="h-100 d-inline-block" style="position:relative; top:100px; left:150px; width: 200px;  border-radius: 5px; background-color: rgba(39,222,93,.5)">
-  <h3 style="text-indent: +32px; ">AVAILABLE</h3>
- 
-  </div>
+  
+  
+  
+  
+   </div>
 </div>
-   </div>-->
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+
   </div>
 
-  <script src="javascripts/js/jquery.min.js"></script>
-  <script src="javascripts/js/popper.js"></script>
-  <script src="javascripts/js/bootstrap.min.js"></script>
-  <script src="javascripts/js/main.js"></script>
+  <script src="/adminpage/js/jquery.min.js"></script>
+  <script src="/adminpage/js/popper.js"></script>
+  <script src="/adminpage/js/bootstrap.min.js"></script>
+  <script src="/adminpage/js/main.js"></script>
 </body>
+
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

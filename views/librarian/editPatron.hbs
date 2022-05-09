@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="/adminpage/css/style.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+        <title>Add Book</title>
+        <link rel="stylesheet" href="/bookcss/bookstyle.css">
+        <style>
+                .selec {
+                    width: 120px;
+                    height: 30px;
+                    border: 1px solid #999;
+                    font-size: 15px;
+                    color: #979a9c;
+                    background-color: #eee;
+                    border-radius: 5px;
+                    box-shadow: 4px 4px #ccc;
+                }
+        </style>
+    </head>
+    <body>
+        <div class="wrapper d-flex align-items-stretch">
+            
+                    <!-- Page Content  -->
+            <div id="content" class="p-4 p-md-5 pt-5">
+                <header>
+                    <h1 class="heading"><center>Edit Patron Details</center></h1><br>
+                    <div id="form">
+                        <form class="regform" method="POST" action="/librarian/editPatron/{{Patron._id}}" >
+                        <div class="parent" style="display: flex; flex-direction: column;">
+                            <div style="display:flex; flex-direction:row;"> 
+                                    <label style="padding-left:15px;padding-right:98px;padding-bottom:10px;" for="cars" >Category</label>
+                                    <select name="Category"class="selec" style="padding-bottom:10px;padding-left:10px;padding-top:2px;margin-bottom:30px">
+                                         <option  value="{{Patron.Category}}"> {{Patron.Category}} </option>
+                                         <option value="Student_2019">Student_2019</option>
+                                         <option value="Faculty">Faculty</option>
+                                    </select>
+                                </div>
+
+                        </div>
+                            <input type="text" value="{{Patron.PatronId}}" placeholder="Patron ID" name="PatronId">
+                            <input type="text" value="{{Patron.PatronName}}" name="PatronName" placeholder="Name">
+                            
+                            <input type="submit" value="Edit">
+                             <input type="reset" id="clear" onclick="window.location.href='/librarian/patron'" value="cancel">
+        
+                        </form>
+                    </div>
+                </header>
+            </div>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.js"></script>
+            <script src="/bookjs/bookscript.js"></script>
+        </div>
+        <script src="/adminpage/js/popper.js"></script>
+        <script src="/adminpage/js/bootstrap.min.js"></script>
+    </body>
+</html>

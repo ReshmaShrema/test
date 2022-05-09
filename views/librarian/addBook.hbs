@@ -5,11 +5,25 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" type="text/css" href="/stylesheets/adminpage/css/style.css">
+        <link rel="stylesheet" type="text/css" href="/adminpage/css/style.css">
+       <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+	
+	
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.js"></script>
+	
+
+        
+
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Add Book</title>
-        <link rel="stylesheet" href="/stylesheets/bookcss/bookstyle.css">
+        <link rel="stylesheet" href="/bookcss/bookstyle.css">
+     
         <style>
+             .error {
+      color: red;
+
+    }
                 .selec {
                     width: 120px;
                     height: 30px;
@@ -22,71 +36,22 @@
                 }
         </style>
     </head>
-    <body>
-        <div class="wrapper d-flex align-items-stretch">
-            <nav id="sidebar">
-                <div class="custom-menu">
-                    <button type="button" id="sidebarCollapse" class="btn btn-primary"></button>
-                </div>
-                <div class="img bg-wrap text-center py-4" style="background-image: url(/images/bg_1.jpg);">
-                    <div class="user-logo">
-                        <div class="img" style="background-image: url(/images/admin.png);"></div>
-                        <h3>ADMIN</h3>
-                    </div>
-                </div>
-                <ul class="list-unstyled components mb-5">
-                    <li>
-                        <a href="adminhome.html"><span class="fa fa-home mr-3"></span>HOME</a>
-                    </li>
-                    <li>
-                        <a href="addbook.html"><span class="fa fa-book mr-3"></span>Add Book</a>
-                    </li>
-                   <!--
-                    <li>
-                        <a href="studentconfirm.html"><span class="fa fa-child mr-3"></span>Student confirmation</a>
-                    </li>
-                    <li>
-                        <a href="facultyreg.html"><span class="fa fa-user mr-3"></span>Faculty registration</a>
-                    </li>
-                    <li>
-                        <a href="booksearch.html"><span class="fa fa-book mr-3"></span>Book Search</a>
-                    </li>
-                    <li>
-                        <a href="bookissue.html"><span class="fa fa-book mr-3"></span>Issue Book</a>
-                    </li>
-                    <li>
-                        <a href="bookrenew.html"><span class="fa fa-book mr-3"></span>Renew Book</a>
-                    </li>
-                    <li>
-                        <a href="returnbook.html"><span class="fa fa-reply mr-3"></span>Return Book</a>
-                    </li>
-                    <li>
-                        <a href="studentsearch.html"><span class="fa fa-table mr-3"></span>Student Search</a>
-                    </li>
-                    <li>
-                        <a href="fine.html"><span class="fa fa-money mr-3"></span>Fine</a>
-                    </li>
-                    <li>
-                        <a href="report.html"><span class="fa fa-support mr-3"></span> Report</a>
-                    </li>
-                    <li>
-                        <a href="change.html"><span class="fa  fa-key mr-3"></span> Change password</a>
-                    </li>
-                    <li>
-                        <a href="logout.html"><span class="fa fa-sign-out mr-3"></span> Sign Out</a>
-                    </li>  -->
-                </ul>
-            </nav>
-                    <!-- Page Content  -->
+    <body class="subpage">
+         <div class="wrapper d-flex align-items-stretch">
+        
+    <!-- Page Content  -->
             <div id="content" class="p-4 p-md-5 pt-5">
-                <header>
+                <div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+                <section>
                     <h1 class="heading"><center>Add Book</center></h1><br>
                     <div id="form">
-                        <form class="regform" id="addbook" method="POST" action="/librarian/addBook" enctype="multipart/form-data">
+                        <form class="login100-form validate-form regform" id="regform" method="POST" action="/librarian/addBook" enctype="multipart/form-data">
                         <div class="parent" style="display: flex; flex-direction: column;">
                             <div style="display:flex; flex-direction:row;"> 
                                     <label style="padding-left:15px;padding-right:98px;padding-bottom:10px;" for="cars" >Category</label>
-                                    <select name="Category"class="selec" style="padding-bottom:10px;padding-left:10px;padding-top:2px;margin-bottom:30px">
+                                    <select required name="ItemType"class="selec" style="padding-bottom:10px;padding-left:10px;padding-top:2px;margin-bottom:30px">
                                          <option hidden value="">Select</option>
                                          <option value="Book">Book</option>
                                          <option value="Project">Project</option>
@@ -94,46 +59,104 @@
                                 </div>
 
                         </div>
-                            <input type="text" placeholder="Book Id/call No" name="BookId">
-                            <input type="text" name="ISBN" placeholder="Enter isbn">
-                            <input type="text" name="Title" placeholder="Book Title">
-                            <input type="text" placeholder="Author Name" name="Author">
-                            <input type="text" placeholder="Edition" name="Edition">
-                            <input type="text" name="Publication" placeholder="Publication">
-                            <!--      <div style="font-size:15px; ">-->
-                            <!--   <div style="display:inline;;padding-top:0px;padding-left:10px;padding-bottom:10px;padding-right:50px;">-->    
-                            <div class="parent" style="display: flex; flex-direction: column;">
+                        
+                    <div class="wrap-input100 validate-input m-b-26">
+						<input class="input100" type="text" name="BookId" required placeholder="Call No/Book ID">
+						<span class="focus-input100"></span>
+						<span id="avail"></span>
+					</div>
+                    <div class="wrap-input100 validate-input m-b-26">
+						<input class="input100" type="text" name="ISBN" required placeholder="Enter isbn">
+						<span class="focus-input100"></span>
+						<span id="avail"></span>
+					</div>
+                    <div class="wrap-input100 validate-input m-b-26">
+						<input class="input100" type="text" name="BookTitle" required  placeholder="Book Title">
+						<span class="focus-input100"></span>
+						<span id="avail"></span>
+					</div>
+                    <div class="wrap-input100 validate-input m-b-26">
+						<input class="input100" type="text" name="AuthorName"  required placeholder="Author Name">
+						<span class="focus-input100"></span>
+						<span id="avail"></span>
+					</div>
+                    <div class="wrap-input100 validate-input m-b-26">
+						<input class="input100" type="text" name="Edition" required placeholder="Edition">
+						<span class="focus-input100"></span>
+						<span id="avail"></span>
+					</div>
+                    <div class="wrap-input100 validate-input m-b-26">
+						<input class="input100" type="text" name="Publication" required  placeholder="Publication">
+						<span class="focus-input100"></span>
+						<span id="avail"></span>
+					</div>
+                            
+                    <div class="parent" style="display: flex; flex-direction: column;">
                                 
                                 <div style="display: flex; flex-direction: row;">
                                     <label style="padding-left:15px;padding-right:53px;" for="cars" >Autherized Value</label>
-                                    <select name="AutherizedValue"class="selec" style="padding-bottom:10px;padding-left:10px;padding-top:2px;margin-bottom:30px">
+                                    <select required name="AutherizedValue"class="selec" style="padding-bottom:10px;padding-left:10px;padding-top:2px;margin-bottom:30px">
                                         <option hidden value="">Select</option>
                                         <option value="Reference">Reference</option>  
                                     </select>
                                 </div>
                                 <div style="display: flex; flex-direction: row;">     
                                     <label style="padding-left:15px;padding-right:110px;" for="" >Subject</label>
-                                    <select name="Subject" class="selec" style="padding-bottom:10px;padding-left:10px;padding-top:2px;margin-bottom:30px">
+                                    <select required name="Subject" class="selec" style="padding-bottom:10px;padding-left:10px;padding-top:2px;margin-bottom:30px">
                                         <option hidden value="">Select</option>
                                         <option value="Discrete Mathematics">Discrete Mathematics</option>  
                                     </select>
                                 </div>
                                 <div style="display: flex; flex-direction: row;">     
                                     <label style="padding-left:15px;padding-right:90px;" for="" >CoverPage</label>
-                                    <input type="file" name="image">
+                                    <input required type="file" name="image">
                                 </div>
                             </div>
                             <input type="submit" value="Add">
-                            <input type="reset" id="clear" value="cancel">
+                            <input type="reset" id="clear" onclick="window.location.href='/librarian/book'" value="cancel">
                         </form>
-                    </div>
-                </header>
+                    </div></div></div>
+                </section>
             </div>
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
             <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.js"></script>
-            <script src="bookjs/bookscript.js"></script>
-        </div>
-        <script src="adminpage/js/popper.js"></script>
-        <script src="adminpage/js/bootstrap.min.js"></script>
+            <script src="/bookjs/bookscript.js"></script>
+        </div></div>
+        <script src="/adminpage/js/popper.js"></script>
+        <script src="/adminpage/js/bootstrap.min.js"></script>
     </body>
 </html>
+<script>
+$(document).ready(function(){
+  $('#admno').blur(function(){
+     var admno = $(this). val();
+     $.ajax({
+       url:"check.php",
+       method:"POST",
+       data:{user_id:admno},
+       dataType:"text",
+       success:function(html)
+        {
+          $('#avail').html(html);
+        }
+     
+     });
+    });
+    
+    $('#email').blur(function(){
+     var email = $(this). val();
+     $.ajax({
+       url:"check.php",
+       method:"POST",
+       data:{email_id:email},
+       dataType:"text",
+       success:function(html)
+        {
+          $('#available').html(html);
+        }
+     
+     });
+    });
+
+});
+</script>

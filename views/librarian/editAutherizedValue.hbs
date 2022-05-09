@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="/adminpage/css/style.css">
+       <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+	
+	
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.js"></script>
+	
+
+        
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>MCA_CET</title>
+        <link rel="stylesheet" href="/bookcss/bookstyle.css">
+     
+        <style>
+             .error {
+      color: red;
+
+    }
+                .selec {
+                    width: 120px;
+                    height: 30px;
+                    border: 1px solid #999;
+                    font-size: 15px;
+                    color: #979a9c;
+                    background-color: #eee;
+                    border-radius: 5px;
+                    box-shadow: 4px 4px #ccc;
+                }
+        </style>
+    </head>
+    <body class="subpage">
+         <div class="wrapper d-flex align-items-stretch">
+        
+    <!-- Page Content  -->
+            <div id="content" class="p-4 p-md-5 pt-5">
+                <div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+                <section>
+                    <h1 class="heading"><center>Edit Autherized Value</center></h1><br>
+                    <div id="form">
+                        <form class="login100-form validate-form regform" id="regform" method="POST" action="/librarian/editAutherizedValue/{{AutherizedValue._id}}" enctype="multipart/form-data">
+                    
+                        
+                    <div class="wrap-input100 validate-input m-b-26">
+						<input class="input100" type="text" name="AutherizedValue" value="{{AutherizedValue.AutherizedValue}}"  placeholder="ItemType">
+						<span class="focus-input100"></span>
+						<span id="avail"></span>
+					</div>
+                    
+              
+                
+                  
+            
+                            
+                   
+                            <input type="submit" value="Edit">
+                            <input type="reset" id="clear" onclick="window.location.href='/librarian/autherizedValue'" value="cancel">
+                        </form>
+                    </div></div></div>
+                </section>
+            </div>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.js"></script>
+            <script src="/bookjs/bookscript.js"></script>
+        </div></div>
+        <script src="/adminpage/js/popper.js"></script>
+        <script src="/adminpage/js/bootstrap.min.js"></script>
+    </body>
+</html>
+<script>
+$(document).ready(function(){
+  $('#admno').blur(function(){
+     var admno = $(this). val();
+     $.ajax({
+       url:"check.php",
+       method:"POST",
+       data:{user_id:admno},
+       dataType:"text",
+       success:function(html)
+        {
+          $('#avail').html(html);
+        }
+     
+     });
+    });
+    
+    $('#email').blur(function(){
+     var email = $(this). val();
+     $.ajax({
+       url:"check.php",
+       method:"POST",
+       data:{email_id:email},
+       dataType:"text",
+       success:function(html)
+        {
+          $('#available').html(html);
+        }
+     
+     });
+    });
+
+});
+</script>
